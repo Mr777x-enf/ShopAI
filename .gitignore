@@ -1,0 +1,15 @@
+#python
+
+backend/venv/
+backend/.env/ 
+backend/__pycache__/
+
+#React 
+frontend/node_modules/
+frontend/dist/
+
+#VsCode
+.vscode/
+#windows
+Thumbs.db 
+
