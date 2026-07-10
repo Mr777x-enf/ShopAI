@@ -15,8 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 
+from backend.config import settings
+api_patterns = [ 
+    path("auth/",include("users.urls")), 
+    path("products/",include("products.urls")),
+    path("cart/",include("cart.urls")),
+    path("orders/",include("orders.urls")),
+    path("payments/", include("apps.payments.urls")),
+    path("ai/", include("apps.ai_assistant.urls")),
+    path("search/", include("apps.search.urls")),
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger"),
+
+]
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('api/', include(api_patterns)),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -33,18 +33,11 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'users',
-    'rest_framework',
-    'corsheaders',
-    'pgvector.django',
-]
+DJANGO_APPS = ["django.contrib.admin","django.contrib.auth","django.contrib.contenttypes","django.contrib.sessions","django.contrib.messages","django.contrib.staticfiles"]
+THIRD_PARTY_APPS = ["rest_framework","rest_framework_simplejwt","rest_framework_simplejwt.token_blacklist","corsheaders","django_filters","drf_spectacular","django_celery_beat","storages"]
+LOCAL_APPS = ["apps.users","apps.products","apps.orders","apps.cart","apps.wishlist","apps.payments","apps.ai_assistant","apps.search","core"]
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
